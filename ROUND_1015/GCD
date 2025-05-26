@@ -1,0 +1,85 @@
+import java.util.*;
+public class GCD{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+            int n=sc.nextInt();
+            long arr[]=new int[n];
+            for(int i=0;i<n;i++){
+                arr[i]=sc.nextLong();
+            }
+            Arrays.sort(arr);
+            boolean pos=false;
+            for(int i=0;i<n;i++){
+                for(int j=i+1;j<n;j++){
+                    if(arr[j]%arr[i]==0){
+                        pos=true;
+                        break;
+                    }
+                }
+                if(pos) break;
+            }
+            System.out.println(pos?"YES":"NO")
+        }
+    }
+}
+
+/* import java.util.*;
+
+public class PermutationModCondition {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            List<Integer> result = solve(n);
+
+            if (result == null) {
+                System.out.println(-1);
+            } else {
+                for (int num : result) {
+                    System.out.print(num + " ");
+                }
+                System.out.println();
+            }
+        }
+
+        sc.close();
+    }
+
+    static List<Integer> solve(int n) {
+        boolean[] used = new boolean[n + 1];
+        List<Integer> perm = new ArrayList<>();
+        for (int start = 1; start <= n; start++) {
+            Arrays.fill(used, false);
+            perm.clear();
+            perm.add(start);
+            used[start] = true;
+
+            boolean valid = true;
+
+            for (int i = 2; i <= n; i++) {
+                boolean found = false;
+                for (int x = 1; x <= n; x++) {
+                    if (!used[x] && (Math.max(perm.get(i - 2), x) % i == i - 1)) {
+                        perm.add(x);
+                        used[x] = true;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid) return new ArrayList<>(perm);
+        }
+
+        return null;
+    }
+}
+*/
