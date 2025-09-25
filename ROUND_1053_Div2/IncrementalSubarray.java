@@ -1,25 +1,26 @@
 import java.util.*;
-public class AllLengthSubtraction{
+public class IncrementalSubarray{
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         int t=sc.nextInt();
-        while (t-->0) {
+        while(t-->0){
+            int m=sc.nextInt();
             int n=sc.nextInt();
             int a[]=new int[n];
             for(int i=0;i<n;i++){
                 a[i]=sc.nextInt();
             }
-            String ans="YES";
-            for(int i=0;i<n;i++){
-                int c=0;
-                if(i-1>=0 && a[i-1]>a[i]) c++;
-                if(i+1<n && a[i]<a[i+1]) c++;
-                if(c==2){
-                    ans="NO";
+            boolean inc=true;
+            for(int i=1;i<n;i++){
+                if(a[i]<=a[i-1]){
+                    inc =false;
                     break;
                 }
             }
-            System.out.println(ans);
+            if(inc){
+                System.out.println((m-a[n-1]+1));
+            }
+            else System.out.println(1);
         }
     }
 }
